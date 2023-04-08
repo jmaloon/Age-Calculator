@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Age calculator app</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      :root {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+
+        background-color: #f0f0f0;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .page {
+        width: calc(100vw - 40px);
+        min-height: calc(100vh - 40px - 20px);
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 40px;
+
+        background-color: white;
+        border-radius: 20px;
+        border-bottom-right-radius: 160px;
+      }
+
+      form {
+        position: relative;
+        width: 100%;
+        display: flex;
+        gap: 16px;
+
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #dedede;
+      }
+      form div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form label {
+        color: #686868;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        margin-bottom: 4px;
+      }
+      form label.error {
+        color: red;
+      }
+
+      form input {
+        max-width: 100px;
+        padding: 12px;
+
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        border: 1px solid #dedede;
+        border-radius: 4px;
+      }
+      form input.error {
+        border: 1px solid red;
+      }
+      form input:focus {
+        outline: none;
+        border: 1px solid #864cff;
+      }
+
+      form span {
+        font-size: 11px;
+        font-weight: 400;
+        font-style: italic;
+
+        margin-top: 4px;
+      }
+      form span.error {
+        color: red;
+      }
+
+      form button {
+        width: 80px;
+        height: 80px;
+        padding: 0;
+
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateY(50%);
+
+        background-color: #864cff;
+        border: none;
+        border-radius: 100px;
+
+        cursor: pointer;
+      }
+      form button:hover,
+      form button:focus {
+        outline: none;
+        background-color: black;
+      }
+
+      .result {
+        font-size: 80px;
+        font-weight: 800;
+        font-style: italic;
+        line-height: 1.1;
+      }
+      .result p {
+        margin: 0;
+      }
+      .result p span {
+        color: #864cff;
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="container">
+        <form>
+          <div>
+            <label for="day">Day</label>
+            <input type="text" id="day" name="day" placeholder="DD" />
+            <span class="error"></span>
+          </div>
+
+          <div>
+            <label for="month">Month</label>
+            <input type="text" id="month" name="month" placeholder="MM" />
+            <span class="error"></span>
+          </div>
+
+          <div>
+            <label for="year">Year</label>
+            <input type="text" id="year" name="year" placeholder="YYYY" />
+            <span class="error"></span>
+          </div>
+
+          <button>
+            <img src="./assets/images/icon-arrow.svg" />
+          </button>
+        </form>
+
+        <div class="result">
+          <p><span>--</span> years</p>
+          <p><span>--</span> months</p>
+          <p><span>--</span> days</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Josh Maloon</a>.
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
