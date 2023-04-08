@@ -145,17 +145,6 @@ function calculateAge(formData) {
   };
 }
 
-function setResults(
-  { day, month, year } = { day: "--", month: "--", year: "--" }
-) {
-  const [yearsParagraph, monthsParagraph, daysParagraph] =
-    document.querySelectorAll(".result p");
-
-  yearsParagraph.firstChild.textContent = year;
-  monthsParagraph.firstChild.textContent = month;
-  daysParagraph.firstChild.textContent = day;
-}
-
 function getDaysInMonth(year, month) {
   // Create a new date object for the first day of the next month
   const date = new Date(year, month + 1, 0);
@@ -165,4 +154,34 @@ function getDaysInMonth(year, month) {
   const daysInMonth = date.getDate();
 
   return daysInMonth;
+}
+
+function setResults(
+  { day, month, year } = { day: "--", month: "--", year: "--" }
+) {
+  const resultsDiv = document.querySelector(".result");
+
+  // Remove children from node
+  [...resultsDiv.children].forEach((child) => {
+    resultsDiv.removeChild(child);
+  });
+
+  // Add children to node
+  resultsDiv.appendChild(createResultNode(year, "year"));
+  resultsDiv.appendChild(createResultNode(month, "month"));
+  resultsDiv.appendChild(createResultNode(day, "day"));
+}
+
+function createResultNode(value, name) {
+  const parentNode = document.createElement("p");
+
+  const valueNode = document.createElement("span");
+  valueNode.textContent = value;
+
+  const textNode = document.createTextNode(` ${name}${value === 1 ? "" : "s"}`);
+
+  parentNode.appendChild(valueNode);
+  parentNode.appendChild(textNode);
+
+  return parentNode;
 }
