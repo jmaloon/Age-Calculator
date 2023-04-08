@@ -122,7 +122,7 @@ function calculateAge(formData) {
   let yearDifference = currentDate.getFullYear() - formDate.getFullYear();
   let monthDifference = currentDate.getMonth() - formDate.getMonth();
   if (monthDifference < 0) {
-    month += 12;
+    monthDifference += 12;
     yearDifference -= 1;
   }
 
@@ -133,7 +133,7 @@ function calculateAge(formData) {
     monthDifference -= 1;
 
     if (monthDifference < 0) {
-      month += 12;
+      monthDifference += 12;
       yearDifference -= 1;
     }
   }
