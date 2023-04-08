@@ -42,14 +42,12 @@ function getFormData() {
 }
 
 function getFormErrors({ day, month, year }) {
-  const currentDate = new Date();
   const errors = {};
 
   if (day === "") {
     errors.day = "This field is required";
   } else {
-    const daysInMonth = getDaysInMonth(year, month - 1);
-    const isValidDay = isValidInRange(day, { min: 1, max: daysInMonth });
+    const isValidDay = isValidInRange(day, { min: 1, max: 31 });
     if (!isValidDay) {
       errors.day = "Must be a valid day";
     }
@@ -67,10 +65,23 @@ function getFormErrors({ day, month, year }) {
   if (year === "") {
     errors.year = "This field is required";
   } else {
+    const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const isValidYear = isValidInRange(year, { min: 1, max: currentYear });
     if (!isValidYear) {
       errors.year = "Must be in the past";
+    }
+  }
+
+  if (Object.keys(errors).length === 0) {
+    const daysInMonth = getDaysInMonth(year, month - 1);
+    const isValidDate = isValidInRange(day, { max: daysInMonth });
+    if (!isValidDate) {
+      return {
+        year: "",
+        month: "",
+        day: "Must be a valid date",
+      };
     }
   }
 
@@ -87,21 +98,21 @@ function isValidInRange(value, { min, max }) {
 }
 
 function setHtmlErrors(errors = {}) {
-  if (errors.day) {
+  if (errors.day !== undefined) {
     dayLabelElement.classList.add("error");
     dayInputElement.classList.add("error");
   } else {
     dayLabelElement.classList.remove("error");
     dayInputElement.classList.remove("error");
   }
-  if (errors.month) {
+  if (errors.month !== undefined) {
     monthLabelElement.classList.add("error");
     monthInputElement.classList.add("error");
   } else {
     monthLabelElement.classList.remove("error");
     monthInputElement.classList.remove("error");
   }
-  if (errors.year) {
+  if (errors.year !== undefined) {
     yearLabelElement.classList.add("error");
     yearInputElement.classList.add("error");
   } else {
